@@ -1,0 +1,5 @@
+2022-03-01 17:26:10 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USER 
+INSERT INTO[*] USER (ID, FIRST_NAME,LAST_NAME,EMAIL,PHONE_NUMBER) VALUES (1, 'demola', 'ajayi','demola@gmail.com','08156565689')"; SQL statement:
+SELECT * FROM USER 
+INSERT INTO user (id, first_name,last_name,email,phone_number) VALUES (1, 'demola', 'ajayi','demola@gmail.com','08156565689') [42000-200]
