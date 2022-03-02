@@ -25,7 +25,6 @@ public class User {
     @Column(unique = true, nullable = false)
     private String phoneNumber;
 
-
     @Column(length = 500)
     private String address;
 }

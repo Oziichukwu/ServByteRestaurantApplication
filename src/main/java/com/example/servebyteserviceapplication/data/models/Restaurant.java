@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class RestaurantOwner {
+public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
