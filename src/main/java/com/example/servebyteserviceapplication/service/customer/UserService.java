@@ -1,4 +1,4 @@
-package com.example.servebyteserviceapplication.service;
+package com.example.servebyteserviceapplication.service.customer;
 
 import com.example.servebyteserviceapplication.data.dtos.UserDto;
 
