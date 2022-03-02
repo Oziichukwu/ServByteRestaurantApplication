@@ -1,8 +1,17 @@
 package com.example.servebyteserviceapplication.data.repositories;
 
+import com.example.servebyteserviceapplication.data.models.City;
+import com.example.servebyteserviceapplication.data.models.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Restaurant extends JpaRepository<Restaurant, Long> {
+import java.util.List;
+import java.util.Optional;
 
-    
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
+
+    //Optional<Restaurant> findByRestaurantEmail(String email);
+
+    List<Restaurant> findByCityName(City city);
+
+
 }
