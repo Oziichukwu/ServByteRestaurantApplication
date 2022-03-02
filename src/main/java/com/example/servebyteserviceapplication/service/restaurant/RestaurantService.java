@@ -1,4 +1,4 @@
-package com.example.servebyteserviceapplication.service;
+package com.example.servebyteserviceapplication.service.restaurant;
 
 import com.example.servebyteserviceapplication.data.dtos.request.RestaurantRequestDto;
 import com.example.servebyteserviceapplication.data.models.City;
