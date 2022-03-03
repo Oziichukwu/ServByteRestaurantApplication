@@ -14,4 +14,5 @@ public interface RestaurantService {
     Restaurant createRestaurant(RestaurantRequestDto restaurantRequestDto);
     Restaurant updateRestaurantDetails(Long restuarantId, JsonPatch patchPath);
     List<Restaurant> findByCityName(City city);
+    Restaurant updateRestaurant(Long restaurantId, RestaurantRequestDto requestDto);
 }
