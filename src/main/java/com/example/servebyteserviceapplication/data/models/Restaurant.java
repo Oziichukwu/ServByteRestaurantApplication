@@ -23,4 +23,6 @@ public class Restaurant {
 
     @Enumerated(EnumType.STRING)
     private City cityName;
+
+
 }
