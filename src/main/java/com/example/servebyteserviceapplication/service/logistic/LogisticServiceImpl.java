@@ -90,7 +90,7 @@ public class LogisticServiceImpl implements LogisticService{
         updatedDelivery.setEmail(logisticDto.getEmail());
         updatedDelivery.setName(logisticDto.getName());
         updatedDelivery.setPhoneNumber(logisticDto.getPhoneNumber());
-        //updatedDelivery.setDeliveryChannel((List<DeliveryChannel>) logisticDto.getDeliveryChannel());
+        updatedDelivery.setDeliveryChannel((List<DeliveryChannel>) logisticDto.getDeliveryChannel());
 
         return deliveryCompanyRepository.save(updatedDelivery);
     }

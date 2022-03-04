@@ -1,4 +1,4 @@
-package com.example.servebyteserviceapplication.service;
+package com.example.servebyteserviceapplication.service.user;
 
 import com.example.servebyteserviceapplication.data.models.User;
 import com.example.servebyteserviceapplication.data.repositories.UserRepository;
