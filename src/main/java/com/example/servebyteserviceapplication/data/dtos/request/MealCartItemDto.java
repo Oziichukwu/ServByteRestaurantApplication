@@ -1,2 +1,14 @@
-package com.example.servebyteserviceapplication.data.dtos.request;public class MealCartItemDto {
+package com.example.servebyteserviceapplication.data.dtos.request;
+
+
+import lombok.Data;
+
+@Data
+public class MealCartItemDto {
+
+    private Long restaurantId;
+
+    private Long mealId;
+
+    private int quantity;
 }
