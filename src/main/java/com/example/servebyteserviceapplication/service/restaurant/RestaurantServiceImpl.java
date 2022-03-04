@@ -74,7 +74,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
 
-    private void getRestaurant(RestaurantRequestDto restaurantRequestDto) {
+    public void getRestaurant(RestaurantRequestDto restaurantRequestDto) {
 
         Restaurant restaurant = new Restaurant();
 
