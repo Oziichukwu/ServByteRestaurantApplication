@@ -4,6 +4,7 @@ import com.example.servebyteserviceapplication.data.models.User;
 import com.example.servebyteserviceapplication.data.repositories.UserRepository;
 import com.example.servebyteserviceapplication.data.dtos.UserDto;
 import com.example.servebyteserviceapplication.service.customer.UserService;
+import com.example.servebyteserviceapplication.service.email.EmailUtil;
 import com.example.servebyteserviceapplication.web.exceptions.ServByteServiceException;
 import com.example.servebyteserviceapplication.web.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private EmailUtil emailUtil;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -31,6 +35,8 @@ public class UserServiceImpl implements UserService {
         userDto1.setPhoneNumber(userDto.getPhoneNumber());
 
         saveUser(userDto1);
+
+        emailUtil.sendEmail("oziichukwu1@gmail.com", "Location saved","Location saved successfully and about to reture a response");
 
         return UserDto.builder()
                 .firstName(userDto1.getFirstName())

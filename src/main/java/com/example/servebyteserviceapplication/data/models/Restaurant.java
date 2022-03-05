@@ -27,9 +27,13 @@ public class Restaurant {
     @OneToOne(cascade = CascadeType.ALL)
     private final MealCart myFavouriteMeal;
 
+    @OneToOne
+    private final DeliveryCompany deliveryCompany;
+
     public Restaurant(){
         this.myFavouriteMeal = new MealCart();
         this.myFavouriteMeal.setTotalPrice(0.0);
+        this.deliveryCompany = new DeliveryCompany();
     }
 
 }
