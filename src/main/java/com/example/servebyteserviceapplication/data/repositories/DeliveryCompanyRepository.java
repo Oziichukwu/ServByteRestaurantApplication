@@ -9,7 +9,5 @@ import java.util.Optional;
 
 public interface DeliveryCompanyRepository extends JpaRepository<DeliveryCompany,Long> {
 
-    List<DeliveryCompany> findByCityName(City city);
-    Optional<DeliveryCompany> findByLogisticEmail(String email);
 
 }

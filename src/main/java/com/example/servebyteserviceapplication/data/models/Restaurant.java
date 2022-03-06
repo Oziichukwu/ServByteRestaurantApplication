@@ -4,6 +4,7 @@ package com.example.servebyteserviceapplication.data.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -27,13 +28,13 @@ public class Restaurant {
     @OneToOne(cascade = CascadeType.ALL)
     private final MealCart myFavouriteMeal;
 
-    @OneToOne
-    private final DeliveryCompany deliveryCompany;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<DeliveryCompany> deliveryCompanies;
 
     public Restaurant(){
         this.myFavouriteMeal = new MealCart();
         this.myFavouriteMeal.setTotalPrice(0.0);
-        this.deliveryCompany = new DeliveryCompany();
+
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.servebyteserviceapplication.data.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -17,10 +18,18 @@ public class DeliveryCompany {
 
     private String email;
 
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryOptions deliveryOptions;
+
     private String phoneNumber;
 
     private String logo;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<DeliveryChannel> deliveryChannel;
+    private LocalTime averageTimeOfDelivery;
+
+
+        public DeliveryCompany(){
+            this.averageTimeOfDelivery = LocalTime.of(1,30);
+        }
 }
