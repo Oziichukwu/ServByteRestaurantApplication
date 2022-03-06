@@ -5,14 +5,13 @@ import com.cloudinary.utils.ObjectUtils;
 import com.example.servebyteserviceapplication.data.dtos.request.LogisticDto;
 import com.example.servebyteserviceapplication.data.dtos.response.LogisticResponseDto;
 import com.example.servebyteserviceapplication.data.models.City;
-import com.example.servebyteserviceapplication.data.models.DeliveryChannel;
 import com.example.servebyteserviceapplication.data.models.DeliveryCompany;
+import com.example.servebyteserviceapplication.data.models.DeliveryOptions;
 import com.example.servebyteserviceapplication.data.repositories.DeliveryCompanyRepository;
 import com.example.servebyteserviceapplication.service.cloud.CloudService;
 import com.example.servebyteserviceapplication.web.exceptions.BusinessLogicException;
 import com.example.servebyteserviceapplication.web.exceptions.DeliveryCompanyDoesNotExistException;
 import com.example.servebyteserviceapplication.web.exceptions.LogisticServiceDoesNotExist;
-import com.example.servebyteserviceapplication.web.exceptions.ServByteServiceException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,9 +53,7 @@ public class LogisticServiceImpl implements LogisticService{
     @Override
     public DeliveryCompany createLogistic(LogisticDto logisticDto) {
         if (logisticDto == null) throw new BusinessLogicException("Argument cannot be null;");
-        if (deliveryCompanyRepository.findByLogisticEmail(logisticDto.getEmail()).isPresent()){
-            throw new ServByteServiceException("Logistic Company with " + logisticDto.getEmail() + " already exist");
-        }
+
 
         DeliveryCompany deliveryCompany = new DeliveryCompany();
 
@@ -76,7 +73,7 @@ public class LogisticServiceImpl implements LogisticService{
         deliveryCompany.setName(logisticDto.getName());
         deliveryCompany.setPhoneNumber(logisticDto.getPhoneNumber());
         deliveryCompany.setEmail(logisticDto.getEmail());
-        deliveryCompany.setDeliveryChannel((List<DeliveryChannel>) logisticDto.getDeliveryChannel());
+        deliveryCompany.setDeliveryOptions(DeliveryOptions.valueOf(logisticDto.getDeliveryOptions().toString()));
 
         return deliveryCompanyRepository.save(deliveryCompany);
     }
@@ -90,8 +87,7 @@ public class LogisticServiceImpl implements LogisticService{
         updatedDelivery.setEmail(logisticDto.getEmail());
         updatedDelivery.setName(logisticDto.getName());
         updatedDelivery.setPhoneNumber(logisticDto.getPhoneNumber());
-        updatedDelivery.setDeliveryChannel((List<DeliveryChannel>) logisticDto.getDeliveryChannel());
-
+        updatedDelivery.setDeliveryOptions(logisticDto.getDeliveryOptions());
         return deliveryCompanyRepository.save(updatedDelivery);
     }
 
@@ -128,11 +124,4 @@ public class LogisticServiceImpl implements LogisticService{
         return objectMapper.treeToValue(patched, DeliveryCompany.class);
     }
 
-    @Override
-    public List<DeliveryCompany> findByCityName(City city) {
-        if(city == null) throw new IllegalArgumentException("Id can not be null");
-        List<DeliveryCompany> queryResult = deliveryCompanyRepository.findByCityName(city);
-        if(queryResult!=null) return queryResult;
-        else throw new DeliveryCompanyDoesNotExistException("Product with ID: does not not exist");
-    }
 }

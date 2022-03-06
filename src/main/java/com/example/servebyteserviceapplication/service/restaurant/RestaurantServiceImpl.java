@@ -55,7 +55,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         if (restaurantRequestDto == null) throw new ServByteServiceException("Restaurant request cannot be null");
 
-        Optional<Restaurant> query = restaurantRepository.findByRestaurantEmail(restaurantRequestDto.getEmail());
+        Optional<Restaurant> query = restaurantRepository.findByEmail(restaurantRequestDto.getEmail());
 
         if (query.isPresent()){
             throw new ServByteServiceException("Restaurant with email " + restaurantRequestDto.getEmail()+ " does not exist");
@@ -138,7 +138,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
         List<Restaurant> restaurantByCity = restaurantRepository.findByCityName(city);
         if (restaurantByCity != null) return restaurantByCity;
-        else throw new RestuarantDoesNotExistException("Restuarant with name does not exist");
+        else throw new RestuarantDoesNotExistException("Restaurant with name does not exist");
     }
 
     @Override

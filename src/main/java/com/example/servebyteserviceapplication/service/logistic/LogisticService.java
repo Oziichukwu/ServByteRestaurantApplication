@@ -20,6 +20,5 @@ public interface LogisticService {
 
     DeliveryCompany updateLogisticDetails(Long id, JsonPatch patch);
 
-    List<DeliveryCompany>findByCityName(City city);
 
 }

@@ -10,9 +10,9 @@ import java.util.List;
 public interface RestaurantService {
 
     List<Restaurant> getAllRestaurants();
-    Restaurant findRestaurantById(Long restuarantId);
+    Restaurant findRestaurantById(Long restaurantId);
     Restaurant createRestaurant(RestaurantRequestDto restaurantRequestDto);
-    Restaurant updateRestaurantDetails(Long restuarantId, JsonPatch patchPath);
+    Restaurant updateRestaurantDetails(Long restaurantId, JsonPatch patchPath);
     List<Restaurant> findByCityName(City city);
     Restaurant updateRestaurant(Long restaurantId, RestaurantRequestDto requestDto);
 }
