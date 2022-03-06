@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/logistic")
 public class LogisticController {
@@ -51,16 +51,6 @@ public class LogisticController {
             return new ResponseEntity<>(deliveryCompany, HttpStatus.CREATED);
         }catch (RestuarantDoesNotExistException | BusinessLogicException e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-    @GetMapping()
-    public ResponseEntity<?>findLogisticByCity(@RequestBody City city){
-
-        try{
-            return new ResponseEntity<>(logisticService.findByCityName(city), HttpStatus.OK);
-        }catch (BusinessLogicException e){
-            return new ResponseEntity<>(new ApiResponse(false,
-                    "Restaurant was not found"), HttpStatus.NO_CONTENT);
         }
     }
 
