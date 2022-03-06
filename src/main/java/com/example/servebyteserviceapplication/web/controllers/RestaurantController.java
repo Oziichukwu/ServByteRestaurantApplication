@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/restaurant")
 public class RestaurantController {
@@ -24,12 +26,11 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
 
-    @GetMapping()
-    public ResponseEntity<?> findAllRestaurant(){
-
-        List<Restaurant> restaurantList = restaurantService.getAllRestaurants();
-        return new ResponseEntity<>(restaurantList, HttpStatus.OK);
-    }
+//    @GetMapping("")
+//    public ResponseEntity<?>findAllRestaurant(){
+//        List<Restaurant> restaurantList = restaurantService.getAllRestaurants();
+//        return new ResponseEntity<>(restaurantList, HttpStatus.OK);
+//    }
 
     @GetMapping("/{restaurantId}")
     public ResponseEntity<?>findRestaurant(@PathVariable Long restaurantId){
